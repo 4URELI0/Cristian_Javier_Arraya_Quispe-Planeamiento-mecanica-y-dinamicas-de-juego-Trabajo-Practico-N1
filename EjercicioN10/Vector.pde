@@ -27,21 +27,14 @@ private PVector obtenerPuntoFinal()
 /*Operacion suma*/
 public Vector sumaVectores(Vector segundoVector)
 {
- Vector vectorResultante = new Vector();//Creamos un nuevo vector que sera el resultado de la suma
- vectorResultante.origen = this.origen;
- vectorResultante.destino.x = this.destino.x + segundoVector.destino.x;
- vectorResultante.destino.y = this.destino.y + segundoVector.destino.y;
+ Vector vectorResultante = new Vector();//Creamos un nuevo vector que sera el resultado de la suma 
+ vectorResultante.origen = this.origen;//El nuevo vector va a tener el mismo valor que el de x e y del vectorA
+ vectorResultante.destino.x = this.destino.x + segundoVector.destino.x;//El valor en X del destino del nuevo vector va a ser igual a el valor x destino del primer vector + el valor x destino del segundo vector
+ vectorResultante.destino.y = this.destino.y + segundoVector.destino.y;//El valor en Y del destino del nuevo vector va a ser igual a el valor Y destino del primer vector + el valor Y destino del segundo vector
  return vectorResultante;//Tercer vector
 }
-/*Resta*/
-public Vector restaVectores(Vector segundoVector)
-{
- Vector vectorResultante = new Vector();//Creamos un nuevo vector que sera el resultado de la suma
- vectorResultante.origen = this.origen;
- vectorResultante.destino.x = this.destino.x - segundoVector.destino.x;
- vectorResultante.destino.y = this.destino.y - segundoVector.destino.y;
- return vectorResultante;//Tercer vector
-}
+
+/*Creamos los metodos accesores*/
 public PVector getOrigen() {
     return this.origen;
   }
@@ -49,8 +42,6 @@ public PVector getOrigen() {
   public PVector getDestino() {
     return this.destino;
   }
-
-  // Setters
   public void setOrigen(PVector origen) {
     this.origen = origen;
   }
