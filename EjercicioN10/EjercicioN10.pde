@@ -4,8 +4,8 @@ private Vector vectorC;
 private Vector vectorD;
 private Vector vectorE;
 /*Variables que tendran el resultado de los nuevos vectores*/
-//Vector vectorResultante1;//suma
-//Vector vectorResultante2;//resta
+Vector vectorResultante1;//suma
+Vector vectorResultante2;//resta
 public void setup(){
 /*Puntos*/
 PVector puntoA = new PVector(width/2,height/2);//Origen de vectorA
@@ -24,8 +24,8 @@ vectorD = new Vector(PVector.add(vectorA.getOrigen(),vectorA.getDestino()),vecto
 
 vectorE = new Vector(PVector.add(vectorB.getOrigen(),vectorB.getDestino()),vectorA.getDestino());
 /*Almacenamos el resultado en la variable vectorResultante1 y vectorResultante2*/
-//vectorResultante1 = vectorA.sumaVectores(vectorB);
-//vectorResultante2 = vectorA.restaVectores(vectorB);
+vectorResultante1 = vectorA.sumaVectores(vectorB);
+vectorResultante2 = vectorA.restaVectores(vectorB);
 }
 public void draw(){
 background(0);
@@ -44,5 +44,10 @@ vectorD.display();
 /*Linea rosa es el vectorE*/
 stroke(#FF0DEF);
 vectorE.display();
-//vectorResultante2.display();
+/*Linea amarrilla es el resultado de la suma*/
+stroke(#FFF80D);
+vectorResultante1.display();
+/*Linea morada es el resultado de la resta*/
+stroke(#750DFF);
+vectorResultante2.display();
 }
