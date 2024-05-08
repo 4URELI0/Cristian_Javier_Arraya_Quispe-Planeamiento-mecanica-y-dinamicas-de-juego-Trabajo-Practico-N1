@@ -5,6 +5,7 @@ Vector vectorJugador;
 Vector vectorEnemigo;
 Vector vectorEnemigoJugador;
 
+ArrayList<Disparo> disparoList;
 public void setup()
 {
   size(800,500);
@@ -15,6 +16,7 @@ public void setup()
   vectorEnemigo = new Vector (posicionEnemigo,puntoA);
   vectorEnemigoJugador = new Vector();
   
+  disparoList = new ArrayList<Disparo>();
 }
 
 public void draw()
@@ -28,6 +30,10 @@ public void draw()
     vectorEnemigo.display();
     escribirMensaje();
     
+    for(Disparo unDisparo : disparoList){
+    unDisparo.render();
+    unDisparo.move();
+    }
 }
 
 public void dibujarVectorEnemigoJugador()
@@ -77,7 +83,10 @@ public void escribirMensaje()
   {
     fill(#ff6961);
     text("Detectado!",100,50);
-  }else
+    
+    disparoList.add(new Disparo((int)vectorEnemigo.getOrigen().x,(int)vectorEnemigo.getOrigen().y));
+    
+}else
   {
     fill(#00FF0A);
     text("No detectado...",100,50);
