@@ -5,7 +5,6 @@ Vector vectorJugador;
 Vector vectorEnemigo;
 Vector vectorEnemigoJugador;
 
-ArrayList<Disparo> disparoList;
 public void setup()
 {
   size(800,500);
@@ -16,7 +15,6 @@ public void setup()
   vectorEnemigo = new Vector (posicionEnemigo,puntoA);
   vectorEnemigoJugador = new Vector();
   
-  disparoList = new ArrayList<Disparo>();
 }
 
 public void draw()
@@ -30,10 +28,6 @@ public void draw()
     vectorEnemigo.display();
     escribirMensaje();
     
-    for(Disparo unDisparo : disparoList){
-    unDisparo.render();
-    unDisparo.move();
-    }
 }
 
 public void dibujarVectorEnemigoJugador()
@@ -83,9 +77,6 @@ public void escribirMensaje()
   {
     fill(#ff6961);
     text("Detectado!",100,50);
-    PVector direccionDisparo = PVector.sub(vectorJugador.getOrigen(), vectorEnemigo.getOrigen());
-    // Creamos un nuevo disparo con la dirección calculada y lo agregamos a la lista
-    disparoList.add(new Disparo((int) vectorEnemigo.getOrigen().x + 10, (int) vectorEnemigo.getOrigen().y, direccionDisparo,5));
   }else
   {
     fill(#00FF0A);

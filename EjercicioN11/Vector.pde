@@ -3,20 +3,20 @@ class Vector
 private PVector origen;
 private PVector destino;
 
-  //Contructor parametrizado
+  /*Contructor parametrizado*/
   public Vector (PVector origen, PVector destino)
     {
   this.origen = origen;
   this.destino = destino;
     }
-  //Constructor no parametrizado
+  /*Constructor no parametrizado*/
   public Vector ()
     {
   this.origen = new PVector();
   this.destino = new PVector();
     }
 
- // Getters
+ /*Metodos accesores*/
   public PVector getOrigen() {
     return this.origen;
   }
@@ -25,7 +25,7 @@ private PVector destino;
     return this.destino;
   }
 
-  // Setters
+ 
   public void setOrigen(PVector origen) {
     this.origen = origen;
   }
@@ -50,7 +50,8 @@ private PVector destino;
 
     public float obtenerProductoPunto(Vector vector)
     {
-      return PVector.dot(this.getDestino(),vector.getDestino());
+      float productoPunto = PVector.dot(this.getDestino(),vector.getDestino());
+      return productoPunto;
     }
 
 }
