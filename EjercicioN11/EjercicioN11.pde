@@ -1,30 +1,35 @@
 PVector puntoA;
 PVector posicionJugador;
 PVector posicionEnemigo;
-Vector vectorJugador;
+//Vector vectorJugador;
 Vector vectorEnemigo;
 Vector vectorEnemigoJugador;
+
+PImage imagenJugador;
+Jugador jugador;
 
 ArrayList<Disparo> disparoList;
 public void setup()
 {
   size(800,500);
-  posicionEnemigo = new PVector(width/2,height/2);
+  posicionEnemigo = new PVector(width/2 - 150,height/2);
   posicionJugador = new PVector(0, 0);
   puntoA = new PVector(1, 0);
-  vectorJugador = new Vector (posicionJugador, puntoA);
   vectorEnemigo = new Vector (posicionEnemigo,puntoA);
-  vectorEnemigoJugador = new Vector();
+  vectorEnemigoJugador = new Vector(); 
   
   disparoList = new ArrayList<Disparo>();
+  
+  /*Cargar la imagen del jugador*/
+  imagenJugador = loadImage("Jugador.png");
+  
+  /*Crear instancia del jugador*/
+  jugador = new Jugador(imagenJugador,posicionJugador,50,50);
 }
 
 public void draw()
 {
-    background(#1D0F0F);
-    stroke(#FCFCFC); // Blanco
-    vectorJugador.setOrigen(new PVector (mouseX,mouseY));
-    vectorJugador.display();
+    background(#536456);
     stroke(#FA0000); // Rojo
     dibujarVectorEnemigoJugador();
     vectorEnemigo.display();
@@ -34,13 +39,18 @@ public void draw()
     unDisparo.render();
     unDisparo.move();
     }
+    /*El jugador se ubicara en la posicion del mouse*/
+    jugador.setPosicion(new PVector(mouseX, mouseY));
+    
+    /*Renderizar jugador*/
+    jugador.render();
 }
 
 public void dibujarVectorEnemigoJugador()
 {
   vectorEnemigoJugador.setOrigen(posicionEnemigo);
   vectorEnemigoJugador.setDestino(new PVector(1,0));
-  vectorEnemigoJugador.setDestino(PVector.sub(vectorJugador.getOrigen(),posicionEnemigo).normalize());
+  vectorEnemigoJugador.setDestino(PVector.sub(jugador.getPosicion(),posicionEnemigo).normalize());
   vectorEnemigoJugador.display();
 }
 
@@ -67,29 +77,29 @@ float anguloEntreVectores(Vector vector1, Vector vector2) {
 public void escribirMensaje()
 {
   float dotProducto = vectorEnemigo.obtenerProductoPunto(vectorEnemigoJugador);
-  println("Producto punto: "+dotProducto);
+  println("Producto punto: "+ dotProducto);
   textSize(20);
   fill(#F2EDFA);
-  text("Resultado producto punto: "+ dotProducto,100,30);
+  text("Producto punto: "+ dotProducto,1,30);
   float anguloGrados = 30; //Angulo de deteccion del enemigo
   float anguloDeVision = cos(radians(anguloGrados));
   
   //Calcula el angulo entre los vectores del enemigo y el 2do vector de enemigo a jugador
   float angulo = round(anguloEntreVectores(vectorEnemigo,vectorEnemigoJugador));
   //Transformamos el angulo de flotante a entero
-  text("Angulo: " + (int)angulo +"°",80,170);
+  text("angulo entre jugador y enemigo: " + (int)angulo +"°",500,30);
   
   if(dotProducto >= anguloDeVision)
   {
     fill(#ff6961);
-    text("Detectado!",100,50);
-    PVector direccionDisparo = PVector.sub(vectorJugador.getOrigen(),vectorEnemigo.getOrigen());
-     // Creamos un nuevo disparo con la dirección calculada y lo agregamos a la lista
+    text("Jugador detectado!",300,30);
+    PVector direccionDisparo = PVector.sub(jugador.getPosicion(),vectorEnemigo.getOrigen());
+    // Creamos un nuevo disparo con la dirección calculada y lo agregamos a la lista
     disparoList.add(new Disparo((int) vectorEnemigo.getOrigen().x + 10, (int) vectorEnemigo.getOrigen().y, direccionDisparo,5));
     
 }else
   {
     fill(#00FF0A);
-    text("No detectado...",100,50);
+    text("No detectado...",300,30);
   }
 }
