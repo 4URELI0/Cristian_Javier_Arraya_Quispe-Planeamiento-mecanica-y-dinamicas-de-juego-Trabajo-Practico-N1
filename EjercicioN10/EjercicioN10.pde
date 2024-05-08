@@ -21,7 +21,6 @@ vectorB = new Vector(puntoA, puntoC);
 vectorC = vectorA.sumaVectores(vectorB);
 /*Sumamos el origen de vectorA con destino de vectorA, para pocisionarme en donde termina el vectorA y se dibuja hacia el destino de vectorB*/
 vectorD = new Vector(PVector.add(vectorA.getOrigen(),vectorA.getDestino()),vectorB.getDestino());
-
 vectorE = new Vector(PVector.add(vectorB.getOrigen(),vectorB.getDestino()),vectorA.getDestino());
 /*Almacenamos el resultado en la variable vectorResultante1 y vectorResultante2*/
 vectorResultante1 = vectorA.sumaVectores(vectorB);
@@ -47,6 +46,7 @@ vectorE.display();
 /*Linea amarrilla es el resultado de la suma*/
 stroke(#FFF80D);
 vectorResultante1.display();
+println("Resultado del puntoD: "+vectorResultante1.getDestino());
 /*Linea morada es el resultado de la resta*/
 stroke(#750DFF);
 vectorResultante2.display();
