@@ -1,28 +1,27 @@
-class Disparo{
+class Disparo extends GameObject{
 //Variables
-int x;
-int y;
-int d;//Diametro de la bala que sera un circulo
 int velocidad;//Velocidad del disparo
 PVector direccion;//Direccion del disparo
+PVector posicion;//Posicion de donde va a iniciar el disparo
+PImage imagenDisparo;
 
  /*Constructor*/
- Disparo(int inicioX, int inicioY,PVector direccion, int velocidad){
- x = inicioX;
- y = inicioY;
- d = 5;
- this.direccion = direccion.normalize();//El disparo se movera siempre a la misma velocidad
+ public Disparo(PVector posicion,PVector direccion, PImage imagenDisparo,int altoImg,int anchoImg, int velocidad){
+ this.direccion = direccion.normalize();//El disparo se movera siempre a la misma velocidad 
+ this.posicion = posicion;
+ this.imagenDisparo = imagenDisparo;
+ this.altoImg = altoImg;
+ this.anchoImg = anchoImg;
  this.velocidad = velocidad;
  }
  
  public void render(){
- stroke(#FFF700);
- circle(x, y, d);
+ imageMode(CENTER);
+ image(this.imagenDisparo, this.posicion.x,this.posicion.y,this.altoImg,this.anchoImg);
  }
  
  /*Movimiento del disparo*/
  void move(){
- x += direccion.x*+velocidad;
- y += direccion.y*+velocidad;
+ this.posicion.add(PVector.mult(this.direccion,this.velocidad));
  }
 }

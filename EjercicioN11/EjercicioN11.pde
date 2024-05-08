@@ -7,6 +7,10 @@ Vector vectorEnemigoJugador;
 
 PImage imagenJugador;
 Jugador jugador;
+PImage imagenEnemigo;
+Enemigo enemigo;
+PImage imagenDisparo;
+Disparo disparo;
 
 ArrayList<Disparo> disparoList;
 public void setup()
@@ -20,11 +24,14 @@ public void setup()
   
   disparoList = new ArrayList<Disparo>();
   
-  /*Cargar la imagen del jugador*/
+  /*Cargar la imagen del jugador y enemigo*/
   imagenJugador = loadImage("Jugador.png");
+  imagenEnemigo = loadImage("Enemigo.png");
+  imagenDisparo = loadImage("Disparo1.png");
   
-  /*Crear instancia del jugador*/
+  /*Crear instancia del jugador y enemigo*/
   jugador = new Jugador(imagenJugador,posicionJugador,50,50);
+  enemigo = new Enemigo(imagenEnemigo, posicionEnemigo,50,50);
 }
 
 public void draw()
@@ -41,9 +48,12 @@ public void draw()
     }
     /*El jugador se ubicara en la posicion del mouse*/
     jugador.setPosicion(new PVector(mouseX, mouseY));
+    /*El enemigo se ubicara en la posicion de la mitad del ancho y alto de la pantalla*/
+    enemigo.setPosicion(new PVector(width/2 - 150,height/2));
     
     /*Renderizar jugador*/
     jugador.render();
+    enemigo.render();
 }
 
 public void dibujarVectorEnemigoJugador()
@@ -95,8 +105,7 @@ public void escribirMensaje()
     text("Jugador detectado!",300,30);
     PVector direccionDisparo = PVector.sub(jugador.getPosicion(),vectorEnemigo.getOrigen());
     // Creamos un nuevo disparo con la dirección calculada y lo agregamos a la lista
-    disparoList.add(new Disparo((int) vectorEnemigo.getOrigen().x + 10, (int) vectorEnemigo.getOrigen().y, direccionDisparo,5));
-    
+    disparoList.add(new Disparo(new PVector(vectorEnemigo.getOrigen().x + 3,vectorEnemigo.getOrigen().y-15),direccionDisparo,imagenDisparo,50,50,7));
 }else
   {
     fill(#00FF0A);
