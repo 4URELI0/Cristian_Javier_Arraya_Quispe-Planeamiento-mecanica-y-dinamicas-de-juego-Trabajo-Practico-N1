@@ -4,13 +4,15 @@ int x;
 int y;
 int d;//Diametro de la bala que sera un circulo
 int velocidad;//Velocidad del disparo
+PVector direccion;//Direccion del disparo
 
  /*Constructor*/
- Disparo(int inicioX, int inicioY){
+ Disparo(int inicioX, int inicioY,PVector direccion, int velocidad){
  x = inicioX;
  y = inicioY;
  d = 5;
- velocidad = 5;
+ this.direccion = direccion.normalize();//El disparo se movera siempre a la misma velocidad
+ this.velocidad = velocidad;
  }
  
  public void render(){
@@ -20,6 +22,7 @@ int velocidad;//Velocidad del disparo
  
  /*Movimiento del disparo*/
  void move(){
- x += velocidad;
+ x += direccion.x*+velocidad;
+ y += direccion.y*+velocidad;
  }
 }

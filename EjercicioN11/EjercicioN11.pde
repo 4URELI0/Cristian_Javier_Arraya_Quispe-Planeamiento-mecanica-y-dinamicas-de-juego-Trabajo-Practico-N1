@@ -83,8 +83,9 @@ public void escribirMensaje()
   {
     fill(#ff6961);
     text("Detectado!",100,50);
-    
-    disparoList.add(new Disparo((int)vectorEnemigo.getOrigen().x,(int)vectorEnemigo.getOrigen().y));
+    PVector direccionDisparo = PVector.sub(vectorJugador.getOrigen(),vectorEnemigo.getOrigen());
+     // Creamos un nuevo disparo con la dirección calculada y lo agregamos a la lista
+    disparoList.add(new Disparo((int) vectorEnemigo.getOrigen().x + 10, (int) vectorEnemigo.getOrigen().y, direccionDisparo,5));
     
 }else
   {
