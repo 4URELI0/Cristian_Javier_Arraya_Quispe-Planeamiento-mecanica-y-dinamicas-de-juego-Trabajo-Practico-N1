@@ -34,5 +34,4 @@ this.altoImg = altoImg;
 public void setAnchoImg(int anchoImg){
 this.anchoImg = anchoImg;
 }
-
 }
