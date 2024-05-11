@@ -36,7 +36,6 @@ void draw(){
   background(#1A862B);//Fondo verde
   jugador.setPosicion(new PVector(mouseX,mouseY));//Posicion del jugador siempre esta en la posicion del mouse
   jugador.render();
-  enemigo.render();
-  
+  enemigo.render(); 
   vectorJugador.display();
 }

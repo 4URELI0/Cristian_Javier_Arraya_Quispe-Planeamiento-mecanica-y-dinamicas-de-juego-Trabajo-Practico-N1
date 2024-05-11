@@ -53,5 +53,4 @@ private PVector destino;
       float productoPunto = PVector.dot(this.getDestino(),vector.getDestino());
       return productoPunto;
     }
-
 }

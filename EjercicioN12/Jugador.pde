@@ -26,7 +26,23 @@ class Jugador extends GameObject {
   }
   public void VectorJugadorApuntandoObjetivo(){
     this.vectorJugadorEnemigo.setOrigen(this.pos);
-    this.vectorJugadorEnemigo.setDestino(PVector.sub(enemigo.getPosicion(),jugador.getPosicion()));    
+    this.vectorJugadorEnemigo.setDestino(PVector.sub(enemigo.getPosicion(),jugador.getPosicion()));
     vectorJugadorEnemigo.display();
+    Magnitud();
+  }
+  
+  public void Magnitud(){
+  float magnitud = this.vectorJugadorEnemigo.getDestino().mag();
+  println(magnitud);
+  /*Verificacion de la distancia entre jugador y enemigo*/
+  if(magnitud < 180.0){
+  textSize(40);
+  fill(#F70202);
+  text("Enemigo detectado!",0,height/2-210);
+  }else{
+  fill(#FFFAFA);
+  textSize(40);
+  text("Enemigo no detectado...", 0, height/2-210);
+  }
   }
 }
