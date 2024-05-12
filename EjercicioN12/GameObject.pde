@@ -14,7 +14,6 @@ this.altoImg = altoImg;
 this.anchoImg = anchoImg;
 }
 /*Metodos accesores*/
-/*GETTERS*/
 public PVector getPosicion(){
 return this.pos;
 }
@@ -24,7 +23,7 @@ return this.altoImg;
 public int getAnchoImg(){
 return this.anchoImg;
 }
-/*SETTERS*/
+
 public void setPosicion(PVector pos){
 this.pos = pos;
 }

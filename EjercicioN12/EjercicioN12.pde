@@ -21,11 +21,9 @@ void setup(){
   imagenJugador = loadImage("Tanque.png");
   imagenEnemigo = loadImage("TorreVigilancia.png");
  
-  /*Instanciar al jugador y el enemigo en su posicion con su imagen y alto e ancho*/
+/*Instanciar al jugador y el enemigo en su posicion con su imagen y alto e ancho*/
   jugador = new Jugador(imagenJugador, posicionJugador,150,150);
   enemigo = new Enemigo(imagenEnemigo, posicionEnemigo, 100,100);
-  
-
   
   vectorJugadorEnemigo = new Vector();
   vectorEnemigo = new Vector();
@@ -34,7 +32,7 @@ void setup(){
 }
 void draw(){
   background(#1A862B);//Fondo verde
-  jugador.setPosicion(new PVector(mouseX,mouseY));//Posicion del jugador siempre esta en la posicion del mouse
+  jugador.setPosicion(new PVector(mouseX, mouseY));//Posicion del jugador siempre esta en la posicion del mouse
   jugador.render();
   enemigo.render(); 
   vectorJugador.display();

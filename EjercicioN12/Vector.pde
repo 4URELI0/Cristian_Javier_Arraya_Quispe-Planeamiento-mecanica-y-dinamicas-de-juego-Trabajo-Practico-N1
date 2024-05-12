@@ -39,18 +39,11 @@ private PVector destino;
       PVector puntoFinal = obtenerPuntoFinal();
       strokeWeight(6);
       line(origen.x, origen.y, puntoFinal.x,puntoFinal.y);
-      point(PVector.add(this.getOrigen(), this.getDestino()).x,
-            PVector.add(this.getOrigen(), this.getDestino()).y);
+      point(PVector.add(this.getOrigen(), this.getDestino()).x, PVector.add(this.getOrigen(), this.getDestino()).y);
       }
     private PVector obtenerPuntoFinal()
     {
     PVector puntoFinal = new PVector(origen.x+destino.x,origen.y+destino.y);
     return puntoFinal;
-    }
-
-    public float obtenerProductoPunto(Vector vector)
-    {
-      float productoPunto = PVector.dot(this.getDestino(),vector.getDestino());
-      return productoPunto;
     }
 }
