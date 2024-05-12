@@ -42,6 +42,10 @@ class Jugador extends GameObject {
   textSize(40);
   fill(#F70202);
   text("Enemigo detectado!",0,height/2-210);
+  
+  Disparo nuevoDisparo = new Disparo(jugador.getPosicion(), vectorJugadorEnemigo.getDestino(), imagenDisparo, 30, 30,3);
+  disparoList.add(nuevoDisparo);
+    
   rotacionJugador();
   }else{
   fill(#FFFAFA);

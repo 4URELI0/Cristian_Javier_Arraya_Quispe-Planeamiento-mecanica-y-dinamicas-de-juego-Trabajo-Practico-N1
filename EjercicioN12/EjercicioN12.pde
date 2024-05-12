@@ -12,6 +12,10 @@ Jugador jugador;
 PImage imagenEnemigo;
 Enemigo enemigo;
 
+/*Disparo*/
+PImage imagenDisparo;
+Disparo disparo;
+ArrayList<Disparo> disparoList;
 void setup(){
   size(500,500);
   /*Posiciones del enemigo y jugador*/
@@ -20,10 +24,11 @@ void setup(){
   /*Cargar imagen*/
   imagenJugador = loadImage("Tanque.png");
   imagenEnemigo = loadImage("TorreVigilancia.png");
- 
+  imagenDisparo = loadImage("misil.png");
 /*Instanciar al jugador y el enemigo en su posicion con su imagen y alto e ancho*/
   jugador = new Jugador(imagenJugador, posicionJugador,150,150);
   enemigo = new Enemigo(imagenEnemigo, posicionEnemigo, 100,100);
+  disparoList = new ArrayList<Disparo>();
   
   vectorJugadorEnemigo = new Vector();
   vectorEnemigo = new Vector();
@@ -36,4 +41,10 @@ void draw(){
   jugador.render();
   enemigo.render(); 
   vectorJugador.display();
+  
+  /*Instanciar a los disparos*/
+  for(Disparo unDisparo : disparoList){
+  unDisparo.render();
+  unDisparo.move();
+  }
 }
