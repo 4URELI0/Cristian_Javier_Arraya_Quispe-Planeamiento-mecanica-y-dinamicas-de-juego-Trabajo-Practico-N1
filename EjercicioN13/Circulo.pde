@@ -23,6 +23,18 @@ public  void actualizar() {
     // Agregar la velocidad a la posición
     posicion.add(velocidad);
     // Agregar la gravedad a la velocidad
-    velocidad.add(gravedad);          
+    velocidad.add(gravedad); 
+    
+/*-----Colision contra los bordes de la pantalla-------*/
+    // Rebotar en los bordes
+    if (posicion.x > width - radio || posicion.x < radio) {
+      velocidad.x *=-1;
     }
+    if (posicion.y > height - radio) {
+      // Reducir ligeramente la velocidad cuando golpea el fondo de la ventana
+      velocidad.y *= -0.90;
+      posicion.y = height - radio;            
+    }
+}
+
 }
