@@ -36,6 +36,7 @@ this.origen = new PVector();
  {
   PVector puntoFinal = obtenerPuntoFinal();
   strokeWeight(6);
+  fill(#5249DB);
   line(origen.x, origen.y, puntoFinal.x,puntoFinal.y);
   point(PVector.add(this.getOrigen(), this.getDestino()).x,
   PVector.add(this.getOrigen(), this.getDestino()).y);
@@ -44,5 +45,8 @@ this.origen = new PVector();
  {
   PVector puntoFinal = new PVector(origen.x+destino.x,origen.y+destino.y);
   return puntoFinal;
+  }
+  public float productoPunto(Vector segundoVector){
+  return PVector.dot(this.getDestino(),segundoVector.getDestino());
   }
 }
