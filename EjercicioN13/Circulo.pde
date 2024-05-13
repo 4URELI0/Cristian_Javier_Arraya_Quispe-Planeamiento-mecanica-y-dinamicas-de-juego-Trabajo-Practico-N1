@@ -3,7 +3,8 @@ class Circulo {
   PVector velocidad; // Velocidad del círculo
   PVector gravedad; // Gravedad que afecta la aceleración del círculo
   int radio; // Radio del círculo
-
+  PVector normal = new PVector(0, 1);//Vector que apunta hacia abajo
+  Vector normalizado;
   // Constructor parametrizado
   Circulo(int x, int y, int radio) {
     posicion = new PVector(x, y);
@@ -16,6 +17,7 @@ class Circulo {
   void mostrar() {
     fill(#FA7203);
     ellipse(posicion.x, posicion.y, radio*2, radio*2);
+    mostrarNormal();
   }
   
   // Método para actualizar la posición y velocidad del círculo
@@ -35,6 +37,10 @@ public  void actualizar() {
       velocidad.y *= -0.90;
       posicion.y = height - radio;            
     }
+}
+public void mostrarNormal(){
+   normalizado = new Vector(posicion, normal);//Creamos un nuevo vector que inicie desde la posicion del circulo hasta el vector normal
+   normalizado.display();//Dibujamos el nuevo vector normalizado
 }
 
 }
