@@ -13,4 +13,6 @@ void draw() {
   circulo.mostrar();
   /*Dibujamos el circulo*/
   piso.display();
+  /*Realiza la formula de la reflexion con el parametro de tipo Vector*/
+  circulo.reflexion(piso.vectorArriba);
 }

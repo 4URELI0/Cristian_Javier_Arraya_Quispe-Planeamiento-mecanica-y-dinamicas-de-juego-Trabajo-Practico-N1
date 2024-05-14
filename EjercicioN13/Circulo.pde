@@ -36,7 +36,7 @@ public  void actualizar() {
 }
 public void reflexion(Vector vectorArriba){
 /*Le vamos a indicar una colision para que la pelota no se vaya hacia abajo*/
-if(pos.y > 500){
+if(pos.y > 500 - radio){
   /*Aplicamos la formula de la reflexion por partes*/
 reflexionProductoPunto = PVector.dot(vectorArriba.getDestino(),this.getVelocidad());//Obtenemos el producto punto vectorArriba y con la velocidad que es de la pelota
 
